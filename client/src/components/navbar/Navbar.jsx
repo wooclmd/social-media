@@ -3,10 +3,25 @@ import "./navbar.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { AuthContext } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { toggle, darkMode } = useContext(DarkModeContext);
   const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const { logout } = useContext(AuthContext);
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await logout();
+      navigate("/login");
+      return res.data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="navbar">
@@ -46,6 +61,7 @@ const Navbar = () => {
           <div className="user">
             <img src={"/public/uploads/" + currentUser.profilePic} />
             <span>{currentUser.name}</span>
+            {currentUser && <button onClick={handleLogout}>Logout</button>}
           </div>
         )}
       </div>

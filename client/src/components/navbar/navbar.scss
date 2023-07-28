@@ -67,6 +67,18 @@
           border-radius: 50%;
           object-fit: cover;
         }
+        span {
+          color: themed("textColor");
+          font-size: 18px;
+        }
+        button {
+          font-size: 12px;
+          background-color: transparent;
+          border: 1px solid lightgray;
+          color: themed("textColor");
+          padding: 5px;
+          cursor: pointer;
+        }
       }
     }
   }
