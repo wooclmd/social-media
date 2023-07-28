@@ -1,0 +1,80 @@
+@import "../../style.scss";
+
+.stories {
+  @include themify($themes) {
+    background-color: themed("bgSoft");
+    color: themed("textColor");
+    padding: 30px;
+    overflow-x: auto;
+
+    .container {
+      display: flex;
+      gap: 10px;
+      height: 250px;
+      margin-bottom: 10px;
+      @include mobile {
+        height: 50px;
+        justify-content: space-between;
+      }
+
+      .story {
+        flex: 1;
+        position: relative;
+
+        @include mobile {
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          flex: none;
+        }
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+
+        .name {
+          position: absolute;
+          bottom: 10px;
+          left: 10px;
+          font-size: 14px;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: white;
+
+          @include mobile {
+            display: none;
+          }
+        }
+
+        button {
+          position: absolute;
+          bottom: 30px;
+          left: 10px;
+          background-color: #5271ff;
+          color: white;
+          border-radius: 50%;
+          height: 22px;
+          width: 22px;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          font-size: 20px;
+
+          @include mobile {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+          }
+        }
+      }
+    }
+  }
+}
